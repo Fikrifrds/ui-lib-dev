@@ -1,8 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import _Card from "./ui-lib/Card";
+import _Button from "./ui-lib/Button";
+import _Icon from "./ui-lib/Icon";
 
-import Card from "./src/ui-lib/Card";
-
-export default {
-  Card,
-};
+export const Card = _Card;
+export const Button = _Button;
+export const Icon = _Icon;
