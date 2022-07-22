@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ReactComponent as DotsXIcon } from "../assets/icons/solid/dots-horizontal.svg";
+import { ReactComponent as DotsXIcon } from "./assets/icons/solid/dots-horizontal.svg";
 
 const Icon = ({
   name = "archive",
@@ -16,7 +16,7 @@ const Icon = ({
     const importIcon = async () => {
       try {
         const { ReactComponent: namedImport } = await import(
-          `../assets/icons/${type}/${name}.svg`
+          `./assets/icons/${type}/${name}.svg`
         );
         ImportedIconRef.current = namedImport;
       } catch (err) {
