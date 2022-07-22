@@ -2,152 +2,152 @@ import React, { useState } from 'react';
 import Icon from './Icon';
 
 export default function Button({
-    children,
-    outline, 
-    disabled, 
-    to, 
-    size, 
-    type, 
-    bold, 
-    outlineBold,
-    full,
-    className,
-    iconLeft,
-    iconRight,
-    iconSize,
-    ...rest
-  }){
-  const classNames = ['text-sm leading-6 py-2 px-3 rounded-lg'];
-  const classNamesIcon = []
+  children,
+  outline,
+  disabled,
+  to,
+  size,
+  type,
+  bold,
+  outlineBold,
+  full,
+  className,
+  iconLeft,
+  iconRight,
+  iconSize,
+  ...rest
+}) {
+  const classNames = ["text-sm leading-6 py-2 px-3 rounded-lg"];
+  const classNamesIcon = [];
 
   if (outline || outlineBold) {
-    classNames.push("bg-white")
+    classNames.push("bg-white");
     if (outlineBold) {
-      classNames.push('border-2 font-bold');
+      classNames.push("border-2 font-bold");
     } else {
-      classNames.push('border');
+      classNames.push("border");
     }
     switch (type) {
-      case 'primary':
-        classNames.push('border-primary text-primary')
+      case "primary":
+        classNames.push("border-primary text-primary");
         if (iconLeft || iconRight) {
-          classNamesIcon.push("fill-primary")
+          classNamesIcon.push("fill-primary");
         }
         break;
-      case 'secondary':
-        classNames.push('border-secondary text-secondary')
+      case "secondary":
+        classNames.push("border-secondary text-secondary");
         if (iconLeft || iconRight) {
-          classNamesIcon.push("fill-secondary")
+          classNamesIcon.push("fill-secondary");
         }
         break;
-      case 'success':
-        classNames.push('border-success text-success')
+      case "success":
+        classNames.push("border-success text-success");
         if (iconLeft || iconRight) {
-          classNamesIcon.push("fill-success")
+          classNamesIcon.push("fill-success");
         }
         break;
-      case 'warning':
-        classNames.push('border-warning text-warning')
+      case "warning":
+        classNames.push("border-warning text-warning");
         if (iconLeft || iconRight) {
-          classNamesIcon.push("fill-warning")
+          classNamesIcon.push("fill-warning");
         }
         break;
-      case 'danger':
-        classNames.push('border-danger text-danger')
+      case "danger":
+        classNames.push("border-danger text-danger");
         if (iconLeft || iconRight) {
-          classNamesIcon.push("fill-danger")
+          classNamesIcon.push("fill-danger");
         }
         break;
       default:
-        classNames.push('border-primary text-primary')
+        classNames.push("border-primary text-primary");
         if (iconLeft || iconRight) {
-          classNamesIcon.push("fill-primary")
+          classNamesIcon.push("fill-primary");
         }
         break;
     }
   } else {
-    classNames.push('text-white hover:opacity-80')
+    classNames.push("text-white hover:opacity-80");
     if (iconLeft || iconRight) {
-      classNamesIcon.push("fill-white")
+      classNamesIcon.push("fill-white");
     }
     switch (type) {
-      case 'primary':
-        classNames.push('bg-primary')
+      case "primary":
+        classNames.push("bg-primary");
         break;
-      case 'secondary':
-        classNames.push('bg-secondary')
+      case "secondary":
+        classNames.push("bg-secondary");
         break;
-      case 'success':
-        classNames.push('bg-success')
+      case "success":
+        classNames.push("bg-success");
         break;
-      case 'warning':
-        classNames.push('bg-warning')
+      case "warning":
+        classNames.push("bg-warning");
         break;
-      case 'danger':
-        classNames.push('bg-danger')
+      case "danger":
+        classNames.push("bg-danger");
         break;
       default:
-        classNames.push('bg-primary')
+        classNames.push("bg-primary");
         break;
     }
   }
 
   if (disabled) {
-    classNames.push('disabled');
+    classNames.push("disabled");
   }
 
   if (bold) {
-    classNames.push('font-bold');
+    classNames.push("font-bold");
   }
 
   if (className) {
-    classNames.push(className)
+    classNames.push(className);
   }
 
   switch (size) {
-    case 'xs':
-      classNames.push('text-xs')
+    case "xs":
+      classNames.push("text-xs");
       break;
-    case 'sm':
-      classNames.push('text-sm')
+    case "sm":
+      classNames.push("text-sm");
       break;
-    case 'md':
-      classNames.push('text-base')
+    case "md":
+      classNames.push("text-base");
       break;
-    case 'lg':
-      classNames.push('text-lg')
+    case "lg":
+      classNames.push("text-lg");
       break;
-    case 'xl':
-      classNames.push('text-xl')
+    case "xl":
+      classNames.push("text-xl");
       break;
     default:
       break;
   }
 
   if (full) {
-    classNames.push("w-full")
+    classNames.push("w-full");
   }
 
   return (
-    <button
-      className={classNames.join(' ')}
-      disabled={disabled}
-      {...rest}
-    >
+    <button className={classNames.join(" ")} disabled={disabled} {...rest}>
       <div className="flex gap-2 items-center justify-center">
-        {iconLeft && <Icon
-          className={classNamesIcon.join(' ')}
-          name={iconLeft}
-          type="solid"
-          size={iconSize}
-        />}
+        {iconLeft && (
+          <Icon
+            className={classNamesIcon.join(" ")}
+            name={iconLeft}
+            type="solid"
+            size={iconSize}
+          />
+        )}
         {children}
-        {iconRight && <Icon
-          className={classNamesIcon.join(' ')}
-          name={iconRight}
-          type="solid"
-          size={iconSize}
-        />}
+        {iconRight && (
+          <Icon
+            className={classNamesIcon.join(" ")}
+            name={iconRight}
+            type="solid"
+            size={iconSize}
+          />
+        )}
       </div>
     </button>
   );

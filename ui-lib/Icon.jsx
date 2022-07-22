@@ -16,7 +16,7 @@ const Icon = ({
     const importIcon = async () => {
       try {
         const { ReactComponent: namedImport } = await import(
-          `./assets/icons/${type}/${name}.svg`
+          `../public/assets/icons/solid/dots-horizontal.svg`
         );
         ImportedIconRef.current = namedImport;
       } catch (err) {
