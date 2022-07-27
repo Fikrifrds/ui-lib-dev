@@ -1,153 +1,166 @@
 import React, { useState } from 'react';
-import Icon from './Icon';
 
 export default function Button({
-  children,
-  outline,
-  disabled,
-  to,
-  size,
-  type,
-  bold,
-  outlineBold,
-  full,
-  className,
-  iconLeft,
-  iconRight,
-  iconSize,
-  ...rest
-}) {
-  const classNames = ["text-sm leading-6 py-2 px-3 rounded-lg"];
-  const classNamesIcon = [];
+    children="Button",
+    outline, 
+    disabled, 
+    to, 
+    size="sm", 
+    type="success", 
+    bold, 
+    outlineBold,
+    full,
+    className,
+    iconLeft: IconLeft,
+    iconRight: IconRight,
+    iconSize,
+    ...rest
+  }){
+  const classNames = ['text-sm leading-6 rounded-lg'];
+  const classNamesIcon = []
+  let _iconSize = iconSize
 
   if (outline || outlineBold) {
-    classNames.push("bg-white");
+    classNames.push("bg-white")
     if (outlineBold) {
-      classNames.push("border-2 font-bold");
+      classNames.push('border-2 font-bold');
     } else {
-      classNames.push("border");
+      classNames.push('border');
     }
     switch (type) {
-      case "primary":
-        classNames.push("border-primary text-primary");
-        if (iconLeft || iconRight) {
-          classNamesIcon.push("fill-primary");
+      case 'primary':
+        classNames.push('border-primary text-primary')
+        if (IconLeft || IconRight) {
+          classNamesIcon.push("fill-primary")
         }
         break;
-      case "secondary":
-        classNames.push("border-secondary text-secondary");
-        if (iconLeft || iconRight) {
-          classNamesIcon.push("fill-secondary");
+      case 'secondary':
+        classNames.push('border-secondary text-secondary')
+        if (IconLeft || IconRight) {
+          classNamesIcon.push("fill-secondary")
         }
         break;
-      case "success":
-        classNames.push("border-success text-success");
-        if (iconLeft || iconRight) {
-          classNamesIcon.push("fill-success");
+      case 'success':
+        classNames.push('border-success text-success')
+        if (IconLeft || IconRight) {
+          classNamesIcon.push("fill-success")
         }
         break;
-      case "warning":
-        classNames.push("border-warning text-warning");
-        if (iconLeft || iconRight) {
-          classNamesIcon.push("fill-warning");
+      case 'warning':
+        classNames.push('border-warning text-warning')
+        if (IconLeft || IconRight) {
+          classNamesIcon.push("fill-warning")
         }
         break;
-      case "danger":
-        classNames.push("border-danger text-danger");
-        if (iconLeft || iconRight) {
-          classNamesIcon.push("fill-danger");
+      case 'danger':
+        classNames.push('border-danger text-danger')
+        if (IconLeft || IconRight) {
+          classNamesIcon.push("fill-danger")
         }
         break;
       default:
-        classNames.push("border-primary text-primary");
-        if (iconLeft || iconRight) {
-          classNamesIcon.push("fill-primary");
+        classNames.push('border-primary text-primary')
+        if (IconLeft || IconRight) {
+          classNamesIcon.push("fill-primary")
         }
         break;
     }
   } else {
-    classNames.push("text-white hover:opacity-80");
-    if (iconLeft || iconRight) {
-      classNamesIcon.push("fill-white");
+    classNames.push('text-white hover:opacity-80')
+    if (IconLeft || IconRight) {
+      classNamesIcon.push("fill-white")
     }
     switch (type) {
-      case "primary":
-        classNames.push("bg-primary");
+      case 'primary':
+        classNames.push('bg-primary')
         break;
-      case "secondary":
-        classNames.push("bg-secondary");
+      case 'secondary':
+        classNames.push('bg-secondary')
         break;
-      case "success":
-        classNames.push("bg-success");
+      case 'success':
+        classNames.push('bg-success')
         break;
-      case "warning":
-        classNames.push("bg-warning");
+      case 'warning':
+        classNames.push('bg-warning')
         break;
-      case "danger":
-        classNames.push("bg-danger");
+      case 'danger':
+        classNames.push('bg-danger')
         break;
       default:
-        classNames.push("bg-primary");
+        classNames.push('bg-primary')
         break;
     }
   }
 
   if (disabled) {
-    classNames.push("disabled");
+    classNames.push('disabled');
   }
 
   if (bold) {
-    classNames.push("font-bold");
+    classNames.push('font-bold');
   }
 
   if (className) {
-    classNames.push(className);
+    classNames.push(className)
   }
 
   switch (size) {
-    case "xs":
-      classNames.push("text-xs");
+    case 'xs':
+      classNames.push('text-xs py-1 px-3')
+      if (!_iconSize) {
+        _iconSize = 14.5
+      }
       break;
-    case "sm":
-      classNames.push("text-sm");
+    case 'sm':
+      classNames.push('text-sm py-1.5 px-2')
+      if (!_iconSize) {
+        _iconSize = 17
+      }
       break;
-    case "md":
-      classNames.push("text-base");
+    case 'md':
+      classNames.push('text-base py-2 px-3')
+      if (!_iconSize) {
+        _iconSize = 18
+      }
       break;
-    case "lg":
-      classNames.push("text-lg");
+    case 'lg':
+      classNames.push('text-lg py-2.5 px-4')
+      if (!_iconSize) {
+        _iconSize = 20
+      }
       break;
-    case "xl":
-      classNames.push("text-xl");
+    case 'xl':
+      classNames.push('text-xl py-3 px-5')
+      if (!_iconSize) {
+        _iconSize = 24
+      }
       break;
     default:
       break;
   }
 
   if (full) {
-    classNames.push("w-full");
+    classNames.push("w-full")
   }
 
   return (
-    <button className={classNames.join(" ")} disabled={disabled} {...rest}>
+    <button
+      className={classNames.join(' ')}
+      disabled={disabled}
+      {...rest}
+    >
       <div className="flex gap-2 items-center justify-center">
-        {iconLeft && (
-          <Icon
-            className={classNamesIcon.join(" ")}
-            name={iconLeft}
-            type="solid"
-            size={iconSize}
-          />
-        )}
+        {IconLeft && <IconLeft
+          className={classNamesIcon.join(' ')}
+          width={_iconSize}
+          height={_iconSize}
+        />}
         {children}
-        {iconRight && (
-          <Icon
-            className={classNamesIcon.join(" ")}
-            name={iconRight}
-            type="solid"
-            size={iconSize}
-          />
-        )}
+        {IconRight && <IconRight
+          className={classNamesIcon.join(' ')}
+          width={_iconSize}
+          height={_iconSize}
+        />}
       </div>
     </button>
   );
